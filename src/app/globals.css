@@ -23,3 +23,41 @@ body {
 .font-montserrat {
   font-family: var(--font-montserrat);
 }
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 0px #00ffffcc, 0 0 8px #00ffffcc, 0 0 13px #00ffffcc, 0 0 15px #00ffffcc;
+  }
+
+  50% {
+    text-shadow: 0 0 8px #00ffffcc, 0 0 15px #00ffffcc, 0 0 20px #00ffffcc, 0 0 25px #00ffffcc;
+  }
+
+  100% {
+    text-shadow: 0 0 0px #00ffffcc, 0 0 8px #00ffffcc, 0 0 13px #00ffffcc, 0 0 15px #00ffffcc;
+  }
+}
+
+@keyframes box-glow {
+  0% {
+    box-shadow: 0 0 0px #00ffffcc, 0 0 8px #00ffffcc, 0 0 13px #00ffffcc, 0 0 15px #00ffffcc;
+  }
+
+  50% {
+    box-shadow: 0 0 8px #00ffffcc, 0 0 15px #00ffffcc, 0 0 20px #00ffffcc, 0 0 25px #00ffffcc;
+  }
+
+  100% {
+    box-shadow: 0 0 0px #00ffffcc, 0 0 8px #00ffffcc, 0 0 13px #00ffffcc, 0 0 15px #00ffffcc;
+  }
+}
