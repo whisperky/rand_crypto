@@ -1,4 +1,4 @@
-import { Flex, Text, List, Grid } from "@chakra-ui/react";
+import { Flex, Text, List, Grid, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { LuCheckCircle } from "react-icons/lu";
 
@@ -61,12 +61,14 @@ export const AML = () => {
         </MotionText>
 
         <Flex direction="column" gap={12} mt={6}>
-          <Grid templateColumns="repeat(2, 1fr)" gap={12}>
+          <Grid templateColumns="repeat(2, 1fr)">
             <Flex
               flex={1}
               direction="column"
               justifyContent="center"
               alignItems="center"
+              p={9}
+              outline="1px solid #00FFFF44"
             >
               <MotionText
                 fontSize="2xl"
@@ -103,15 +105,22 @@ export const AML = () => {
                 )}
               </List.Root>
             </Flex>
-            <Flex></Flex>
-          </Grid>
-          <Grid templateColumns="repeat(2, 1fr)" gap={12}>
+            <Flex alignItems="left" justifyContent="right">
+              <Image
+                src={"/img/rs_coin.png"}
+                alt="coin"
+                width="50%"
+                objectFit="contain"
+              />
+            </Flex>
             <Flex></Flex>
             <Flex
               flex={1}
               direction="column"
               justifyContent="center"
               alignItems="center"
+              p={9}
+              border="1px solid #00FFFF44"
             >
               <MotionText
                 fontSize="2xl"

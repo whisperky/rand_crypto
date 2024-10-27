@@ -1,9 +1,9 @@
 import { Flex, Text, Button } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 import BannerAnim from "@/components/BannerAnim";
-
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { CryptoPriceDisplay } from "@/components/CryptoPriceDisplay";
 
 const MotionFlex = motion.create(Flex);
 const MotionText = motion.create(Text);
@@ -134,9 +134,17 @@ export const Banner = () => {
         px="10%"
         zIndex="1"
       >
+        <MotionFlex
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <CryptoPriceDisplay cryptos={["BTC", "ETH", "USDT", "XRP", "TON"]} />
+        </MotionFlex>
+
         <MotionText
-          h="72px"
-          fontSize={["3xl", "4xl", "5xl"]}
+          h="90px"
+          fontSize={["4xl", "5xl", "6xl"]}
           fontWeight="bold"
           bgGradient="to-r"
           gradientFrom="cyan.400"
@@ -190,7 +198,7 @@ export const Banner = () => {
               fontSize="lg"
               fontWeight="medium"
               color="white"
-              px="40px"
+              px="150px"
               // bgGradient="to-r"
               // gradientFrom="cyan.400"
               // gradientVia="blue.500"

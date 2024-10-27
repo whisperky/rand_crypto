@@ -11,7 +11,7 @@ interface LoadingProps {
 const Loading = ({ mode }: LoadingProps) => {
   return (
     <Flex
-      className={`fixed inset-0 flex items-center justify-center ${mode}:bg-gray-900`}
+      className={`fixed inset-0 flex items-center justify-center ${mode}:bg-gray-900 bg-[#1a365d]`}
     >
       <Lottie
         animationData={loadingJson}
