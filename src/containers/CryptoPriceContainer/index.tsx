@@ -80,6 +80,7 @@ export const CryptoPriceContainer = ({
                   <CryptoPriceDisplay
                     crypto={crypto as "BTC" | "ETH" | "TON" | "USDT" | "XRP"}
                     price={prices[crypto] || 1000}
+                    delay={(rowIndex * 3 + columnIndex) * 0.2}
                   />
                 </MotionFlex>
               ))}

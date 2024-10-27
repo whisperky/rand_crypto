@@ -8,17 +8,30 @@ const MotionText = motion.create(Text);
 interface CryptoPriceDisplayProps {
   crypto: "BTC" | "ETH" | "TON" | "USDT" | "XRP";
   price: number;
+  delay?: number; // Add delay prop
 }
 
 export const CryptoPriceDisplay = ({
   crypto,
   price,
+  delay = 0.4,
 }: CryptoPriceDisplayProps) => {
-  const [displayPrice, setDisplayPrice] = useState(0); // Add this state
+  const [displayPrice, setDisplayPrice] = useState(0);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
-    // Animate from 0 to target price
-    const duration = 3000; // 1 second animation
+    // Start animation after the delay
+    const timeoutId = setTimeout(() => {
+      setShouldAnimate(true);
+    }, delay * 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!shouldAnimate) return;
+
+    const duration = 3000;
     const steps = 60;
     const increment = price / steps;
     let current = price / 3;
@@ -34,7 +47,7 @@ export const CryptoPriceDisplay = ({
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [price]);
+  }, [price, shouldAnimate]);
 
   return (
     <Flex direction="column" alignItems="center">
