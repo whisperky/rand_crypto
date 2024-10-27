@@ -1,2 +1,5 @@
-export { BannerImage } from "./BannerImage";
-export { BgImg1 } from "./BgImg1";
+export { BTC } from "./BTC";
+export { ETH } from "./ETH";
+export { TON } from "./TON";
+export { USDT } from "./USDT";
+export { XRP } from "./XRP";
