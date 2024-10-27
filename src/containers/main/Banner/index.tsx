@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { BlackFridayBanner } from "@/components/BlackFridayBanner";
 import { BannerImage, BgImg1 } from "@/components/imgs";
 import { CryptoPriceContainer } from "@/containers/CryptoPriceContainer";
+import { GradBtn } from "@/components/GradBtn";
 
 const MotionFlex = motion.create(Flex);
 const MotionText = motion.create(Text);
@@ -13,7 +14,8 @@ export const Banner = () => {
     <Flex
       position="relative"
       minHeight="100vh"
-      py="120px"
+      pt="120px"
+      pb="80px"
       px="10%"
       color="white"
       flexDirection="column"
@@ -105,24 +107,7 @@ export const Banner = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
               >
-                <Button
-                  size="lg"
-                  bgGradient="to-r"
-                  gradientFrom="cyan.400"
-                  gradientTo="blue.500"
-                  px="40px"
-                  color="white"
-                  borderRadius="full"
-                  // _hover={{
-                  //   bgGradient: "to-r",
-                  //   gradientFrom: "cyan.500",
-                  //   gradientTo: "blue.600",
-                  // }}
-                  boxShadow="0 0 20px rgba(0, 255, 255, 0.7)"
-                  _active={{ transform: "scale(0.95)" }}
-                >
-                  Launching soon
-                </Button>
+                <GradBtn text="Launching soon" />
               </MotionFlex>
             </Flex>
           </Flex>
