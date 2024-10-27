@@ -1,11 +1,9 @@
 import { Flex, Text, Button } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
 
-import BannerAnim from "@/components/BannerAnim";
-import { CryptoPriceDisplay } from "@/components/CryptoPriceDisplay";
 import { BlackFridayBanner } from "@/components/BlackFridayBanner";
-import { BannerImage, BgImg1 } from "@/components/icons";
+import { BannerImage, BgImg1 } from "@/components/imgs";
+import { CryptoPriceContainer } from "@/containers/CryptoPriceContainer";
 
 const MotionFlex = motion.create(Flex);
 const MotionText = motion.create(Text);
@@ -50,13 +48,6 @@ export const Banner = () => {
         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
       /> */}
 
-      <MotionFlex
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <CryptoPriceDisplay cryptos={["BTC", "ETH", "USDT", "XRP", "TON"]} />
-      </MotionFlex>
       <Flex gap={6} w="100%" py="30px" zIndex="1">
         <Flex
           flexDirection="column"
@@ -112,7 +103,7 @@ export const Banner = () => {
               <MotionFlex
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.6, duration: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
               >
                 <Button
                   size="lg"
@@ -146,6 +137,16 @@ export const Banner = () => {
           </Flex>
         </Flex>
       </Flex>
+
+      <MotionFlex
+        width="100%"
+        py="50px"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <CryptoPriceContainer cryptos={["BTC", "ETH", "USDT", "XRP", "TON"]} />
+      </MotionFlex>
     </Flex>
   );
 };

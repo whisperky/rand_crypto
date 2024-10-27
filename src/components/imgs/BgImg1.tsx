@@ -24,9 +24,9 @@ export const BgImg1 = () => {
           y2="1608.12"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="white" stop-opacity="0" />
-          <stop offset="0.387874" stopColor="white" stop-opacity="0.04" />
-          <stop offset="1" stopColor="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.387874" stopColor="white" stopOpacity="0.04" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
