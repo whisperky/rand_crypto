@@ -6,7 +6,13 @@ const MotionFlex = motion.create(Flex);
 const MotionText = motion.create(Text);
 
 export const Header = () => {
-  const features = ["AML", "Compliance", "Our Process", "OTC Desk"];
+  const features = [
+    "AML",
+    "Compliance",
+    "Our Process",
+    "OTC Desk",
+    "Terms & Conditions",
+  ];
   const [isScrolled, setIsScrolled] = useState(false); // Add this state
 
   // Add this useEffect hook
@@ -26,11 +32,11 @@ export const Header = () => {
       top="0"
       left="0"
       right="0"
-      height="80px"
+      height="100px"
       align="center"
       justify="space-between"
       wrap="wrap"
-      px="6rem"
+      px="10%"
       color="black"
       zIndex={10}
       bg={isScrolled ? "#0a0f1833" : "#0a0f1800"} // Update this line
@@ -75,15 +81,15 @@ export const Header = () => {
         {features.map((feature, index) => (
           <MotionText
             key={feature}
-            fontSize="md"
-            fontWeight="medium"
+            width="180px"
+            fontSize="16px"
+            fontWeight="400"
             cursor="pointer"
             alignContent="center"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 * (index + 1), duration: 0.3 }}
             position="relative"
-            width="130px"
             textAlign="center"
             _hover={{
               color: "cyan.400",

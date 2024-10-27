@@ -26,9 +26,10 @@ export default function Home() {
     <Flex
       direction="column"
       minHeight="100vh"
-      bgGradient="to-br"
-      gradientFrom="#0a1929"
-      gradientTo="#1a365d"
+      bgColor="#0D0D2B"
+      // bgGradient="to-br"
+      // gradientFrom="#0a1929"
+      // gradientTo="#1a365d"
     >
       <Header />
       <Banner />

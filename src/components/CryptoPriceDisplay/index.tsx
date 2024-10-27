@@ -14,31 +14,31 @@ interface CryptoPriceDisplayProps {
 export const CryptoPriceDisplay = ({ cryptos }: CryptoPriceDisplayProps) => {
   const [prices, setPrices] = useState<Record<string, number>>({});
 
-  useEffect(() => {
-    const fetchPrices = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.coingecko.com/api/v3/simple/price?ids=${cryptos.join(",")}&vs_currencies=usd`
-        );
-        if (response.data) {
-          const newPrices = Object.fromEntries(
-            Object.entries(response.data).map(([key, value]: [string, any]) => [
-              key.toUpperCase(),
-              value.usd,
-            ])
-          );
-          setPrices(newPrices);
-        }
-      } catch (error) {
-        console.error("Error fetching crypto prices:", error);
-      }
-    };
+  //   useEffect(() => {
+  //     const fetchPrices = async () => {
+  //       try {
+  //         const response = await axios.get(
+  //           `https://api.coingecko.com/api/v3/simple/price?ids=${cryptos.join(",")}&vs_currencies=usd`
+  //         );
+  //         if (response.data) {
+  //           const newPrices = Object.fromEntries(
+  //             Object.entries(response.data).map(([key, value]: [string, any]) => [
+  //               key.toUpperCase(),
+  //               value.usd,
+  //             ])
+  //           );
+  //           setPrices(newPrices);
+  //         }
+  //       } catch (error) {
+  //         console.error("Error fetching crypto prices:", error);
+  //       }
+  //     };
 
-    fetchPrices();
-    const interval = setInterval(fetchPrices, 60000); // Update every minute
+  //     fetchPrices();
+  //     const interval = setInterval(fetchPrices, 60000); // Update every minute
 
-    return () => clearInterval(interval);
-  }, [cryptos]);
+  //     return () => clearInterval(interval);
+  //   }, [cryptos]);
 
   return (
     <Flex gap={8} justifyContent="center" width="100%">
