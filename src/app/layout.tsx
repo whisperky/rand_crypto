@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Provider } from "@/components/ui/provider";
 
 import localFont from "next/font/local";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Rubik } from "next/font/google";
 
 import "./globals.css";
 
@@ -20,6 +20,10 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
+const rubik = Rubik({
+  subsets: ["latin"],
+  variable: "--font-rubik",
+});
 
 export const metadata: Metadata = {
   title: "Rand Crypto",
@@ -34,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} font-montserrat antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${rubik.variable} font-rubik antialiased`}
       >
         <Provider>{children}</Provider>
       </body>
