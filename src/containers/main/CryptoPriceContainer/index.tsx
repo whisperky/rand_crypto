@@ -54,7 +54,7 @@ export const CryptoPriceContainer = ({
       gap={16}
       alignItems="center"
       width="100%"
-      pt="40px"
+      pt="50px"
       ref={ref}
     >
       {Array.from({ length: Math.ceil(cryptos.length / 3) }).map(

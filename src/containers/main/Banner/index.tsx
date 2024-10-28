@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 
 import { BlackFridayBanner } from "@/components/BlackFridayBanner";
 import { BannerImage, BgImg1 } from "@/components/imgs";
-import { CryptoPriceContainer } from "@/containers/CryptoPriceContainer";
-import { GradBtn } from "@/components/GradBtn";
+import { GradBtn } from "@/components/Buttons";
+
+import { CryptoPriceContainer } from "@/containers/main/CryptoPriceContainer";
 
 const MotionFlex = motion.create(Flex);
 const MotionText = motion.create(Text);
@@ -107,7 +108,7 @@ export const Banner = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
               >
-                <GradBtn text="Launching soon" />
+                <GradBtn content="Launching soon" />
               </MotionFlex>
             </Flex>
           </Flex>

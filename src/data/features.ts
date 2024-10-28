@@ -1,7 +1,53 @@
+import { FaBalanceScale, FaExchangeAlt, FaFileContract, FaLock, FaSearch, FaShieldAlt, FaUserCheck } from "react-icons/fa";
+
 export const AML_FEATURES = [
   "Advanced KYC/KYB procedures",
   "Real-time transaction monitoring",
   "Risk-based approach to customer due diligence",
   "Ongoing screening against global watchlists",
   "Suspicious activity reporting",
+];
+
+
+export const COMPLIANCE_FEATURES = [
+  {
+    icon: FaShieldAlt,
+    title: "Advanced Security",
+    description:
+      "Multi-layer security system with advanced encryption protocols",
+  },
+  {
+    icon: FaUserCheck,
+    title: "KYC Verification",
+    description: "Robust identity verification process for all users",
+  },
+  {
+    icon: FaFileContract,
+    title: "Regulatory Compliance",
+    description:
+      "Full compliance with international cryptocurrency regulations",
+  },
+  {
+    icon: FaBalanceScale,
+    title: "Risk Management",
+    description: "Comprehensive risk assessment and monitoring systems",
+  },
+];
+
+export const PROCESS_STEPS = [
+  {
+    icon: FaUserCheck,
+    title: "Register",
+    description: "Create an account and complete the KYC process.",
+  },
+  {
+    icon: FaExchangeAlt,
+    title: "Trade",
+    description: "Start trading cryptocurrencies with ease and security.",
+  },
+  {
+    icon: FaLock,
+    title: "Secure",
+    description: "Enjoy peace of mind with our top-notch security measures.",
+  },
 ];

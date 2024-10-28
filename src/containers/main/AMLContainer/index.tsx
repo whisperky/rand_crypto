@@ -1,8 +1,9 @@
-import { GradBtn } from "@/components/GradBtn";
-import { AmlImage, BgImg1, BgImg2, BgImg3 } from "@/components/imgs";
 import { Flex, Text, List } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import { LuCheckCircle } from "react-icons/lu";
+import { motion } from "framer-motion";
+
+import { GradBtn } from "@/components/Buttons";
+import { AmlImage, BgImg1, BgImg2, BgImg3 } from "@/components/imgs";
 
 import { AML_FEATURES } from "@/data/features";
 
@@ -13,7 +14,7 @@ export const AMLContainer = () => {
     <Flex
       position="relative"
       color="white"
-      pt="30px"
+      pt="40px"
       pb="120px"
       px="10%"
       borderRadius="lg"
@@ -89,7 +90,7 @@ export const AMLContainer = () => {
             )
           )}
         </List.Root>
-        <GradBtn text="Learn More" />
+        <GradBtn content="Learn More" />
       </Flex>
     </Flex>
   );
