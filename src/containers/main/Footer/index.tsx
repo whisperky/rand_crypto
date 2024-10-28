@@ -131,7 +131,7 @@ export const Footer = () => {
 
           <Flex
             direction={{ base: "column", lg: "row" }}
-            flex={2}
+            flex={3}
             gap={10}
             justify="space-between"
           >
@@ -172,7 +172,7 @@ export const Footer = () => {
 
           <Flex
             direction="column"
-            flex={1}
+            flex={2}
             align="start"
             gap={8}
             justifyContent="center"
@@ -182,21 +182,42 @@ export const Footer = () => {
               We accept following payment systems
             </Text>
             <Flex gap={4} direction={{ sm: "row", md: "column", xl: "row" }}>
-              <Flex p="24px" bg="#E0E0E008" borderRadius="md">
+              <Flex
+                w="96px"
+                h="64px"
+                alignItems="center"
+                justifyContent="center"
+                bg="#E0E0E008"
+                borderRadius="md"
+              >
                 <Image
                   src="/img/icons/logos_visa.png"
                   height="16px"
                   alt="Visa"
                 />
               </Flex>
-              <Flex px="24px" py="13px" bg="#E0E0E008" borderRadius="md">
+              <Flex
+                w="96px"
+                h="64px"
+                alignItems="center"
+                justifyContent="center"
+                bg="#E0E0E008"
+                borderRadius="md"
+              >
                 <Image
                   src="/img/icons/logos_mastercard.png"
                   height="38px"
                   alt="Mastercard"
                 />
               </Flex>
-              <Flex px="28px" py="12px" bg="#E0E0E008" borderRadius="md">
+              <Flex
+                w="96px"
+                h="64px"
+                alignItems="center"
+                justifyContent="center"
+                bg="#E0E0E008"
+                borderRadius="md"
+              >
                 <Image
                   src="/img/icons/logos_bitcoin.png"
                   height="40px"
@@ -213,6 +234,7 @@ export const Footer = () => {
           justify="space-between"
           alignItems="center"
           mt={10}
+          mb={{ base: 10, md: 0 }}
         >
           <Text fontSize="16px" fontWeight="regular" lineHeight="28px">
             ©2024 Rand Crypto. All rights reserved

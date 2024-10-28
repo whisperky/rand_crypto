@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { Flex, Text, Grid, GridItem } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 import { GradBtn } from "@/components/Buttons";
 
@@ -9,6 +10,9 @@ const MotionFlex = motion.create(Flex);
 const MotionGrid = motion.create(Grid);
 
 export const ComplianceContainer = () => {
+  const featuresRef = useRef(null);
+  const isInView = useInView(featuresRef, { once: true });
+
   return (
     <MotionFlex
       position="relative"
@@ -41,6 +45,7 @@ export const ComplianceContainer = () => {
       </Text>
 
       <Flex
+        ref={featuresRef}
         position="absolute"
         direction="column"
         align="center"
@@ -74,9 +79,11 @@ export const ComplianceContainer = () => {
                 borderRadius="xl"
                 bg="rgba(255, 255, 255, 0.05)"
                 backdropFilter="blur(10px)"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.5 }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                }
+                transition={{ delay: index * 0.2, duration: 0.6 }}
                 _hover={{
                   bg: "rgba(255, 255, 255, 0.1)",
                   transform: "translateY(-5px)",

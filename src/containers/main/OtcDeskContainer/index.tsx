@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { Flex, Text, Image } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { LuArrowRight, LuArrowUp } from "react-icons/lu";
 
 import { GradBtn } from "@/components/Buttons";
@@ -12,6 +13,11 @@ const MotionFlex = motion.create(Flex);
 const MotionText = motion.create(Text);
 
 export const OtcDeskContainer = () => {
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const isSection1InView = useInView(section1Ref, { once: true });
+  const isSection2InView = useInView(section2Ref, { once: true });
+
   return (
     <Flex
       position="relative"
@@ -63,7 +69,8 @@ export const OtcDeskContainer = () => {
         </Text>
       </MotionFlex>
 
-      <Flex
+      <MotionFlex
+        ref={section1Ref}
         position="relative"
         color="white"
         pt="40px"
@@ -73,6 +80,11 @@ export const OtcDeskContainer = () => {
         align="center"
         justify="space-between"
         direction={{ base: "column", md: "row" }}
+        initial={{ opacity: 0, x: -50 }}
+        animate={
+          isSection1InView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
+        }
+        transition={{ duration: 0.8 }}
       >
         {/* Left Side: Text and Button */}
         <Flex
@@ -106,11 +118,16 @@ export const OtcDeskContainer = () => {
         <Flex flex={1} />
 
         {/* Right Side: Image Placeholder */}
-        <Flex
+        <MotionFlex
           position="relative"
           flex={6}
           w={{ base: "100%", md: "50%" }}
           h="320px"
+          initial={{ opacity: 0, x: 50 }}
+          animate={
+            isSection1InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+          }
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Flex
             direction="column"
@@ -196,10 +213,11 @@ export const OtcDeskContainer = () => {
               Price in dollar
             </Text>
           </Flex>
-        </Flex>
-      </Flex>
+        </MotionFlex>
+      </MotionFlex>
 
-      <Flex
+      <MotionFlex
+        ref={section2Ref}
         position="relative"
         color="white"
         pt="40px"
@@ -209,11 +227,25 @@ export const OtcDeskContainer = () => {
         align="center"
         justify="space-between"
         direction={{ base: "column", md: "row" }}
+        initial={{ opacity: 0, x: 50 }}
+        animate={
+          isSection2InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+        }
+        transition={{ duration: 0.8 }}
       >
         {/* Right Side: Image Placeholder */}
-        <Flex position="relative" flex={6} w={{ base: "100%", md: "50%" }}>
+        <MotionFlex
+          position="relative"
+          flex={6}
+          w={{ base: "100%", md: "50%" }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={
+            isSection2InView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
+          }
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <Image src="/img/statistic.png" alt="OTC Desk Chart" w="90%" />
-        </Flex>
+        </MotionFlex>
 
         <Flex flex={1} />
 
@@ -243,7 +275,7 @@ export const OtcDeskContainer = () => {
 
           <GradBtn content="Learn More" py="25px" />
         </Flex>
-      </Flex>
+      </MotionFlex>
 
       {/* CTA Section */}
       <MotionFlex

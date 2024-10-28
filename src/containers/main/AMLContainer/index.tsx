@@ -11,8 +11,10 @@ import { AML_FEATURES } from "@/data/features";
 const MotionFlex = motion.create(Flex);
 
 export const AMLContainer = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.1 });
+  const imgRef = useRef(null);
+  const textRef = useRef(null);
+  const isImgInView = useInView(imgRef, { once: true, amount: 0.1 });
+  const isTextInView = useInView(textRef, { once: true, amount: 0.1 });
 
   return (
     <Flex
@@ -38,30 +40,40 @@ export const AMLContainer = () => {
 
       {/* Left Side: Image Placeholder */}
       <MotionFlex
-        ref={ref}
+        ref={imgRef}
         position="relative"
         w={{ base: "100%", md: "50%" }}
         h="350px"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, x: -20 }}
         animate={{
-          opacity: inView ? 1 : 0,
-          y: inView ? 0 : 20,
+          opacity: isImgInView ? 1 : 0,
+          x: isImgInView ? 0 : -20,
         }}
         transition={{
           duration: 0.5,
-          delay: inView ? 0.2 : 0,
+          delay: isImgInView ? 0.2 : 0,
         }}
       >
         <AmlImage />
       </MotionFlex>
 
       {/* Right Side: Text and Button */}
-      <Flex
+      <MotionFlex
+        ref={textRef}
         direction="column"
         align="start"
         gap={4}
         w={{ base: "100%", md: "40%" }}
         mt={{ base: 8, md: 0 }}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{
+          opacity: isTextInView ? 1 : 0,
+          x: isTextInView ? 0 : 20,
+        }}
+        transition={{
+          duration: 0.5,
+          delay: isTextInView ? 0.2 : 0,
+        }}
       >
         <Text fontSize="36px" fontWeight="bold">
           Anti-Money Laundering (AML)
@@ -109,7 +121,7 @@ export const AMLContainer = () => {
           )}
         </List.Root>
         <GradBtn content="Learn More" />
-      </Flex>
+      </MotionFlex>
     </Flex>
   );
 };
