@@ -3,3 +3,7 @@ export { BannerImage } from "./BannerImage";
 export { BgImg1 } from "./BgImg1";
 export { BgImg2 } from "./BgImg2";
 export { BgImg3 } from "./BgImg3";
+export { BgImg4 } from "./BgImg4";
+export { BgImg5 } from "./BgImg5";
+export { BgEth } from "./BgEth";
+export { BgBtc } from "./BgBtc";
