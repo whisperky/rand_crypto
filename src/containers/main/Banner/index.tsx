@@ -6,6 +6,7 @@ import { BannerImage, BgImg1 } from "@/components/imgs";
 import { GradBtn } from "@/components/Buttons";
 
 import { CryptoPriceContainer } from "@/containers/main/CryptoPriceContainer";
+import { CryptoWidget } from "@/containers/CryptoWidget";
 
 const MotionFlex = motion.create(Flex);
 const MotionText = motion.create(Text);
@@ -50,6 +51,10 @@ export const Banner = () => {
         }}
         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
       /> */}
+
+      <Flex w="100%" px="10%">
+        <CryptoWidget cryptos={["BTC", "ETH", "USDT", "XRP", "TON"]} />
+      </Flex>
 
       <Flex gap={6} w="100%" py="30px" zIndex="1">
         <Flex
@@ -113,12 +118,12 @@ export const Banner = () => {
             </Flex>
           </Flex>
         </Flex>
-        <Flex flex={1} position="relative">
+        <Flex flex={1} flexGrow="inherit" position="relative">
           <BannerImage />
-          <Flex position="absolute" top="180px" right="150px">
+          <Flex position="absolute" top="180px" right="100px">
             <BgImg1 />
           </Flex>
-          <Flex position="absolute" top="180px" right="-350px">
+          <Flex position="absolute" top="180px" right="-400px">
             <BgImg1 />
           </Flex>
         </Flex>
