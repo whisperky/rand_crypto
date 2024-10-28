@@ -6,6 +6,8 @@ import { Flex } from "@chakra-ui/react";
 import { Header } from "@/containers/main/Header";
 import { Banner } from "@/containers/main/Banner";
 import { AMLContainer } from "@/containers/main/AMLContainer";
+import { ComplianceContainer } from "@/containers/main/ComplianceContainer";
+import { OurProcessContainer } from "@/containers/main/OurProcessContainer";
 
 import Loading from "@/components/Loading";
 
@@ -34,6 +36,8 @@ export default function Home() {
       <Header />
       <Banner />
       <AMLContainer />
+      <ComplianceContainer />
+      <OurProcessContainer />
     </Flex>
   );
 }

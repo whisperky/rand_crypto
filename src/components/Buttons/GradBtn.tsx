@@ -1,15 +1,27 @@
+import { ReactNode } from "react";
 import { Button } from "@chakra-ui/react";
 
-export const GradBtn = ({ text }: { text: string }) => {
+export const GradBtn = ({
+  content,
+  px = "30px",
+  py = "10px",
+  ...props
+}: {
+  content: ReactNode;
+  px?: string;
+  py?: string;
+}) => {
   return (
     <Button
       size="lg"
       bgGradient="to-r"
       gradientFrom="cyan.400"
       gradientTo="blue.500"
-      px="40px"
+      px={px}
+      py={py}
       color="white"
       borderRadius="full"
+      {...props}
       _hover={{
         bgGradient: "to-r",
         gradientFrom: "cyan.500",
@@ -18,7 +30,7 @@ export const GradBtn = ({ text }: { text: string }) => {
       //   boxShadow="0 0 20px rgba(0, 255, 255, 0.7)"
       _active={{ transform: "scale(0.95)" }}
     >
-      {text}
+      {content}
     </Button>
   );
 };
