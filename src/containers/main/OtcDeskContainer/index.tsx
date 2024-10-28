@@ -17,7 +17,7 @@ export const OtcDeskContainer = () => {
       position="relative"
       direction="column"
       pt="120px"
-      pb="100px"
+      pb="70px"
       px="10%"
       bg="#2B076E"
       color="white"
@@ -79,6 +79,7 @@ export const OtcDeskContainer = () => {
           direction="column"
           flex={4}
           align="start"
+          alignItems={{ base: "center", md: "start" }}
           gap={8}
           w={{ base: "100%", md: "40%" }}
           mt={{ base: 8, md: 0 }}
@@ -88,6 +89,7 @@ export const OtcDeskContainer = () => {
           </Text>
           <Text
             fontSize="16px"
+            textAlign={{ base: "center", md: "start" }}
             color="#E0E0E0"
             fontWeight="400"
             lineHeight="26px"
@@ -201,7 +203,7 @@ export const OtcDeskContainer = () => {
         position="relative"
         color="white"
         pt="40px"
-        pb="120px"
+        pb={{ base: "70px", md: "120px" }}
         gap={12}
         borderRadius="lg"
         align="center"
@@ -219,6 +221,7 @@ export const OtcDeskContainer = () => {
           direction="column"
           flex={4}
           align="start"
+          alignItems={{ base: "center", md: "start" }}
           gap={8}
           w={{ base: "100%", md: "40%" }}
           mt={{ base: 8, md: 0 }}
@@ -228,6 +231,7 @@ export const OtcDeskContainer = () => {
           </Text>
           <Text
             fontSize="16px"
+            textAlign={{ base: "center", md: "start" }}
             color="#E0E0E0"
             fontWeight="400"
             lineHeight="26px"

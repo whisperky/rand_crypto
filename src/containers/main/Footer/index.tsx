@@ -53,11 +53,17 @@ export const Footer = () => {
               fontWeight="regular"
               lineHeight="28px"
             >
-              Join now with Rand Crypto to get the latest news and start mining
+              Join now with Rand Crypto to get the latest news and start earning
               now
             </Text>
           </Flex>
-          <Flex mt={{ base: 4, md: 0 }} align="center" flexGrow={1}>
+          <Flex
+            direction={{ base: "column", lg: "row" }}
+            mt={{ base: 4, md: 0 }}
+            gap={4}
+            align="center"
+            flexGrow={1}
+          >
             <Input
               placeholder="Enter your email"
               variant="flushed"
@@ -98,7 +104,7 @@ export const Footer = () => {
       <Flex
         direction="column"
         px="10%"
-        py="57px"
+        py={{ base: "10px", md: "57px" }}
         w="100%"
         justify="space-between"
         textAlign="center"
@@ -115,7 +121,7 @@ export const Footer = () => {
             align="start"
             gap={4}
             flex={1}
-            display={{ base: "none", lg: "flex" }}
+            display={{ sm: "flex", md: "none", lg: "flex" }}
           >
             <Image src="/img/logo-color.png" height="50px" alt="Rand Crypto" />
             <Text fontSize="2xl" fontWeight="bold" color="teal.400">

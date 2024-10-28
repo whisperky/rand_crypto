@@ -64,7 +64,7 @@ export const CryptoPriceDisplay = ({
 
   return (
     <Flex direction="column" alignItems="center">
-      <Flex gap={6} alignItems="center">
+      <Flex gap={{ base: 12, lg: 6 }} alignItems="center">
         <IconCard icon={content as "👥" | "💧" | "💎"} size={20} />
         <Flex direction="column">
           <MotionText

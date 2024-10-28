@@ -145,7 +145,7 @@ export const Banner = () => {
 
       <MotionFlex
         width="100%"
-        py="50px"
+        py={{ base: 0, lg: "50px" }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}

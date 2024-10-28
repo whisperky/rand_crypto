@@ -20,7 +20,7 @@ export const AMLContainer = () => {
       position="relative"
       color="white"
       pt="40px"
-      pb="120px"
+      pb="60px"
       px="10%"
       borderRadius="lg"
       align="center"

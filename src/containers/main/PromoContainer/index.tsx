@@ -53,7 +53,7 @@ export const PromoContainer = () => {
         (_, rowIndex) => (
           <Flex
             key={rowIndex}
-            gap={8}
+            gap={12}
             justifyContent="center"
             width="100%"
             direction={{ base: "column", lg: "row" }}

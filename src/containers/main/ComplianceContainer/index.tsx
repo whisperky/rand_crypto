@@ -17,7 +17,7 @@ export const ComplianceContainer = () => {
       justify="center"
       textAlign="center"
       w="100%"
-      pt={{ base: "10px", sm: "20px", md: "120px" }}
+      pt={{ base: "90px", sm: "80px", md: "150px" }}
       pb={{ base: "440px", sm: "360px", md: "320px", lg: "180px", xl: "170px" }}
       px="10%"
       color="white"
