@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Flex, Text, Image } from "@chakra-ui/react";
+import { IoMenu } from "react-icons/io5";
 import { motion } from "framer-motion";
 
 const MotionFlex = motion.create(Flex);
@@ -14,6 +15,7 @@ export const Header = () => {
     { id: "terms", label: "Terms & Conditions" },
   ];
   const [isScrolled, setIsScrolled] = useState(false); // Add this state
+  const [isOpen, setIsOpen] = useState(false); // Add mobile menu state
 
   // Add this useEffect hook
   useEffect(() => {
@@ -39,14 +41,14 @@ export const Header = () => {
       top="0"
       left="0"
       right="0"
-      height="100px"
+      height={{ base: "70px", md: "100px" }} // Adjust height for mobile
       align="center"
       justify="space-between"
       wrap="wrap"
-      px="10%"
+      px={{ base: "3%", md: "5%", lg: "4%", xl: "10%" }} // Adjust padding for mobile
       color="black"
       zIndex={10}
-      bg={isScrolled ? "#0a0f1833" : "#0a0f1800"} // Update this line
+      bg={isOpen ? "#0a0f18f0" : "#0a0f1833"} // Update this line
       backdropFilter={isScrolled ? "blur(15px)" : "none"}
       className="transition-all duration-500"
       initial={{ opacity: 0, y: -50 }}
@@ -55,7 +57,7 @@ export const Header = () => {
     >
       <Flex
         align="center"
-        gap={4}
+        gap={{ base: 2, md: 4 }}
         height="100%"
         onClick={() => handleScroll("banner")}
         _hover={{ cursor: "pointer" }}
@@ -63,14 +65,14 @@ export const Header = () => {
         <Image
           src="/img/logo-color.png"
           alt="Company Logo"
-          width={10}
-          height={10}
+          width={{ base: 8, md: 10 }}
+          height={{ base: 8, md: 10 }}
           objectFit="contain"
         />
         <MotionText
           as="h2"
           fontWeight="bold"
-          fontSize="2xl"
+          fontSize={{ base: "xl", md: "2xl" }}
           color="cyan"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -90,12 +92,37 @@ export const Header = () => {
           Rand Crypto
         </MotionText>
       </Flex>
-      <Flex height="full" color="white">
+
+      {/* Mobile menu button */}
+      <Flex
+        display={{ base: "flex", lg: "none" }}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <IoMenu size={24} color="#e5e7eb" />
+      </Flex>
+
+      {/* Navigation menu */}
+      <Flex
+        height={{ base: "auto", md: "full" }}
+        color="white"
+        position={{ base: "absolute", md: "static" }}
+        top={{ base: "70px", md: "auto" }}
+        left={0}
+        right={0}
+        bg={{ base: isScrolled ? "#0a0f18f0" : "#0a0f18f0", md: "transparent" }}
+        flexDirection={{ base: "column", md: "row" }}
+        display={{ base: isOpen ? "flex" : "none", lg: "flex" }}
+        backdropFilter={{ base: "blur(15px)", lg: "none" }}
+      >
         {features.map((feature, index) => (
           <MotionText
             key={feature.id}
-            onClick={() => handleScroll(feature.id)}
-            width="180px"
+            onClick={() => {
+              handleScroll(feature.id);
+              setIsOpen(false);
+            }}
+            width={{ base: "100%", md: "150px", lg: "145px", xl: "162px" }}
+            py={{ base: 4, md: 0 }}
             fontSize="16px"
             fontWeight="400"
             cursor="pointer"

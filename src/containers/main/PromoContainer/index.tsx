@@ -1,24 +1,16 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import React, { useRef } from "react";
+import { Flex } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
-import axios from "axios";
 
-import { TokenIcon } from "@/components/TokenIcon";
 import { CryptoPriceDisplay } from "@/components/CryptoPriceDisplay";
+
+import { AD_FEATURES } from "@/data/features";
 
 const MotionFlex = motion.create(Flex);
 
-interface CryptoPriceContainerProps {
-  cryptos: string[];
-}
-
-export const CryptoPriceContainer = ({
-  cryptos,
-}: CryptoPriceContainerProps) => {
-  const [prices, setPrices] = useState<Record<string, number>>({});
-
+export const PromoContainer = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -54,17 +46,22 @@ export const CryptoPriceContainer = ({
       gap={16}
       alignItems="center"
       width="100%"
-      pt="50px"
+      pt={{ base: "10px", lg: "50px" }}
       ref={ref}
     >
-      {Array.from({ length: Math.ceil(cryptos.length / 3) }).map(
+      {Array.from({ length: Math.ceil(AD_FEATURES.length / 3) }).map(
         (_, rowIndex) => (
-          <Flex key={rowIndex} gap={8} justifyContent="center" width="100%">
-            {cryptos
-              .slice(rowIndex * 3, (rowIndex + 1) * 3)
-              .map((crypto, columnIndex) => (
+          <Flex
+            key={rowIndex}
+            gap={8}
+            justifyContent="center"
+            width="100%"
+            direction={{ base: "column", lg: "row" }}
+          >
+            {AD_FEATURES.slice(rowIndex * 3, (rowIndex + 1) * 3).map(
+              (feature, columnIndex) => (
                 <MotionFlex
-                  key={crypto}
+                  key={feature.title}
                   flex={1}
                   direction="column"
                   initial={{ opacity: 0, y: 20 }}
@@ -78,12 +75,15 @@ export const CryptoPriceContainer = ({
                   }}
                 >
                   <CryptoPriceDisplay
-                    crypto={crypto as "BTC" | "ETH" | "TON" | "USDT" | "XRP"}
-                    price={prices[crypto] || 1000}
+                    title={feature.title}
+                    content={feature.icon}
+                    value={feature.value}
+                    unit={feature.unit}
                     delay={(rowIndex * 3 + columnIndex) * 0.2}
                   />
                 </MotionFlex>
-              ))}
+              )
+            )}
           </Flex>
         )
       )}

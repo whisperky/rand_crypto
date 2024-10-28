@@ -1,11 +1,11 @@
-import { Flex, Text, Button } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import { BlackFridayBanner } from "@/components/BlackFridayBanner";
 import { BannerImage, BgImg1 } from "@/components/imgs";
 import { GradBtn } from "@/components/Buttons";
 
-import { CryptoPriceContainer } from "@/containers/main/CryptoPriceContainer";
+import { PromoContainer } from "@/containers/main/PromoContainer";
 import { CryptoWidget } from "@/containers/CryptoWidget";
 
 const MotionFlex = motion.create(Flex);
@@ -18,7 +18,7 @@ export const Banner = () => {
       minHeight="100vh"
       pt="120px"
       pb="80px"
-      px="10%"
+      px={{ base: "6px", md: "10px", lg: "5%", xl: "10%" }}
       color="white"
       flexDirection="column"
       alignItems="center"
@@ -52,11 +52,19 @@ export const Banner = () => {
         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
       /> */}
 
-      <Flex w="100%" px="10%">
+      <Flex w="100%" px={{ base: "6px", md: "10px", lg: "5%", xl: "10%" }}>
         <CryptoWidget cryptos={["BTC", "ETH", "USDT", "XRP", "TON"]} />
       </Flex>
 
-      <Flex gap={6} w="100%" py="30px" zIndex="1">
+      <Flex
+        gap={6}
+        direction={{ base: "column", md: "row" }}
+        w="100%"
+        justifyContent="space-between"
+        px={{ base: "10%", md: "8%", lg: "8%", xl: "10%" }}
+        py={{ base: "30px", md: "50px" }}
+        zIndex="1"
+      >
         <Flex
           flexDirection="column"
           flex={1}
@@ -118,7 +126,13 @@ export const Banner = () => {
             </Flex>
           </Flex>
         </Flex>
-        <Flex flex={1} flexGrow="inherit" position="relative">
+        <MotionFlex
+          flex={1}
+          position="relative"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
           <BannerImage />
           <Flex position="absolute" top="180px" right="100px">
             <BgImg1 />
@@ -126,7 +140,7 @@ export const Banner = () => {
           <Flex position="absolute" top="180px" right="-400px">
             <BgImg1 />
           </Flex>
-        </Flex>
+        </MotionFlex>
       </Flex>
 
       <MotionFlex
@@ -136,7 +150,7 @@ export const Banner = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <CryptoPriceContainer cryptos={["BTC", "ETH", "USDT", "XRP", "TON"]} />
+        <PromoContainer />
       </MotionFlex>
     </Flex>
   );

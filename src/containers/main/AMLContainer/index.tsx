@@ -1,6 +1,7 @@
+import { useRef } from "react";
 import { Flex, Text, List } from "@chakra-ui/react";
+import { motion, useInView } from "framer-motion";
 import { LuCheckCircle } from "react-icons/lu";
-import { motion } from "framer-motion";
 
 import { GradBtn } from "@/components/Buttons";
 import { AmlImage, BgImg1, BgImg2, BgImg3 } from "@/components/imgs";
@@ -10,8 +11,12 @@ import { AML_FEATURES } from "@/data/features";
 const MotionFlex = motion.create(Flex);
 
 export const AMLContainer = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.1 });
+
   return (
     <Flex
+      direction={{ base: "column", md: "row" }}
       position="relative"
       color="white"
       pt="40px"
@@ -20,7 +25,6 @@ export const AMLContainer = () => {
       borderRadius="lg"
       align="center"
       justify="space-between"
-      direction={{ base: "column", md: "row" }}
     >
       <Flex position="absolute" top="200px" left="-500px">
         <BgImg1 />
@@ -33,9 +37,23 @@ export const AMLContainer = () => {
       </Flex>
 
       {/* Left Side: Image Placeholder */}
-      <Flex position="relative" w={{ base: "100%", md: "50%" }} h="350px">
+      <MotionFlex
+        ref={ref}
+        position="relative"
+        w={{ base: "100%", md: "50%" }}
+        h="350px"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          opacity: inView ? 1 : 0,
+          y: inView ? 0 : 20,
+        }}
+        transition={{
+          duration: 0.5,
+          delay: inView ? 0.2 : 0,
+        }}
+      >
         <AmlImage />
-      </Flex>
+      </MotionFlex>
 
       {/* Right Side: Text and Button */}
       <Flex
@@ -49,7 +67,7 @@ export const AMLContainer = () => {
           Anti-Money Laundering (AML)
         </Text>
         <Text
-          w="500px"
+          w={{ base: "100%", md: "300px", lg: "400px" }}
           fontSize="16px"
           color="#E0E0E0"
           fontWeight="400"

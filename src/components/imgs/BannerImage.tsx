@@ -1,8 +1,6 @@
 export const BannerImage = () => {
   return (
     <svg
-      width="604"
-      height="586"
       viewBox="0 0 604 586"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

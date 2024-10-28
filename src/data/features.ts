@@ -1,4 +1,4 @@
-import { FaBalanceScale, FaExchangeAlt, FaFileContract, FaLock, FaSearch, FaShieldAlt, FaUserCheck } from "react-icons/fa";
+import { FaBalanceScale, FaExchangeAlt, FaFileContract, FaLock, FaShieldAlt, FaUserCheck } from "react-icons/fa";
 
 export const AML_FEATURES = [
   "Advanced KYC/KYB procedures",
@@ -73,5 +73,29 @@ export const OTC_FEATURES = [
     title: "Secure Settlement",
     description: "Guaranteed settlement through escrow services",
     icon: "🔒",
+  },
+];
+
+export const AD_FEATURES = [
+  {
+    title: "Active Users",
+    value: 100000,
+    unit: "+",
+    description: "Registered users worldwide",
+    icon: "👥",
+  },
+  {
+    title: "Trading Volume",
+    value: 500000000,
+    unit: "$",
+    description: "Monthly trading volume",
+    icon: "💧",
+  },
+  {
+    title: "Success Rate",
+    value: 99.99,
+    unit: "%",
+    description: "Transaction success rate",
+    icon: "💎",
   },
 ];

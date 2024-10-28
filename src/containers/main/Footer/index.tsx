@@ -48,7 +48,7 @@ export const Footer = () => {
               Start earning now
             </Text>
             <Text
-              w="400px"
+              w={{ base: "100%", sm: "300px", md: "400px" }}
               fontSize="16px"
               fontWeight="regular"
               lineHeight="28px"
@@ -63,8 +63,17 @@ export const Footer = () => {
               variant="flushed"
               mr={2}
               borderBottom="1px solid #FFFFFF64"
-              _focus={{ outline: "none", borderBottom: "none" }}
-              _active={{ outline: "none", borderBottom: "none" }}
+              _focus={{
+                outline: "none",
+                borderBottom: "none",
+                outlineWidth: "0",
+              }}
+              _active={{
+                outline: "none",
+                borderBottom: "none",
+                outlineWidth: "0",
+              }}
+              _placeholder={{ color: "white" }}
             />
             <Button
               colorScheme="whiteAlpha"
@@ -92,58 +101,113 @@ export const Footer = () => {
         py="57px"
         w="100%"
         justify="space-between"
+        textAlign="center"
         bgClip="#0D0D2B"
       >
-        <Flex justify="space-between" py={10}>
-          <Flex align="start" gap={4} flex={1}>
-            <Image src="/img/logo-color.png" height="50px" />
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          justify="space-between"
+          alignItems="center"
+          py={10}
+          gap={10}
+        >
+          <Flex
+            align="start"
+            gap={4}
+            flex={1}
+            display={{ base: "none", lg: "flex" }}
+          >
+            <Image src="/img/logo-color.png" height="50px" alt="Rand Crypto" />
             <Text fontSize="2xl" fontWeight="bold" color="teal.400">
               Rand Crypto
             </Text>
           </Flex>
 
-          <Flex direction="column" flex={1} align="start" gap={2}>
-            <Text fontSize="20px" fontWeight="bold">
-              Quick Link
-            </Text>
-            <Link href="#">Home</Link>
-            <Link href="#">Products</Link>
-            <Link href="#">About</Link>
-            <Link href="#">Features</Link>
-            <Link href="#">Contact</Link>
+          <Flex
+            direction={{ base: "column", lg: "row" }}
+            flex={2}
+            gap={10}
+            justify="space-between"
+          >
+            <Flex
+              direction="column"
+              flex={1}
+              align="start"
+              gap={2}
+              alignItems={{ base: "center", md: "start" }}
+            >
+              <Text fontSize="20px" fontWeight="bold">
+                Quick Link
+              </Text>
+              <Link href="#">Home</Link>
+              <Link href="#">Products</Link>
+              <Link href="#">About</Link>
+              <Link href="#">Features</Link>
+              <Link href="#">Contact</Link>
+            </Flex>
+
+            <Flex
+              direction="column"
+              flex={1}
+              align="start"
+              gap={2}
+              alignItems={{ base: "center", md: "start" }}
+            >
+              <Text fontSize="20px" fontWeight="bold">
+                Resources
+              </Text>
+              <Link href="#">Download Whitepaper</Link>
+              <Link href="#">Smart Token</Link>
+              <Link href="#">Blockchain Explorer</Link>
+              <Link href="#">Crypto API</Link>
+              <Link href="#">Interest</Link>
+            </Flex>
           </Flex>
 
-          <Flex direction="column" flex={1} align="start" gap={2}>
-            <Text fontSize="20px" fontWeight="bold">
-              Resources
-            </Text>
-            <Link href="#">Download Whitepaper</Link>
-            <Link href="#">Smart Token</Link>
-            <Link href="#">Blockchain Explorer</Link>
-            <Link href="#">Crypto API</Link>
-            <Link href="#">Interest</Link>
-          </Flex>
-
-          <Flex direction="column" flex={1} align="start" gap={8}>
+          <Flex
+            direction="column"
+            flex={1}
+            align="start"
+            gap={8}
+            justifyContent="center"
+            alignItems="center"
+          >
             <Text fontSize="32px" fontWeight="medium">
               We accept following payment systems
             </Text>
-            <Flex gap={4}>
+            <Flex gap={4} direction={{ sm: "row", md: "column", xl: "row" }}>
               <Flex p="24px" bg="#E0E0E008" borderRadius="md">
-                <Image src="/img/icons/logos_visa.png" height="16px" />
+                <Image
+                  src="/img/icons/logos_visa.png"
+                  height="16px"
+                  alt="Visa"
+                />
               </Flex>
               <Flex px="24px" py="13px" bg="#E0E0E008" borderRadius="md">
-                <Image src="/img/icons/logos_mastercard.png" height="38px" />
+                <Image
+                  src="/img/icons/logos_mastercard.png"
+                  height="38px"
+                  alt="Mastercard"
+                />
               </Flex>
               <Flex px="28px" py="12px" bg="#E0E0E008" borderRadius="md">
-                <Image src="/img/icons/logos_bitcoin.png" height="40px" />
+                <Image
+                  src="/img/icons/logos_bitcoin.png"
+                  height="40px"
+                  alt="Bitcoin"
+                />
               </Flex>
             </Flex>
           </Flex>
         </Flex>
 
         {/* Social Icons */}
-        <Flex justify="space-between" alignItems="center" mt={10}>
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          justify="space-between"
+          alignItems="center"
+          mt={10}
+        >
           <Text fontSize="16px" fontWeight="regular" lineHeight="28px">
             ©2024 Rand Crypto. All rights reserved
           </Text>

@@ -4,10 +4,17 @@ import { FaChevronRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 import { GradBtn, NextArrowBtn } from "@/components/Buttons";
+import { PROCESS_STEPS } from "@/data/features";
 
 const MotionFlex = motion.create(Flex);
 
-export const ProcessCard = ({ step, index }: { step: any; index: number }) => {
+export const ProcessCard = ({
+  step,
+  index,
+}: {
+  step: (typeof PROCESS_STEPS)[number];
+  index: number;
+}) => {
   const [isHover, setIsHover] = useState(false);
 
   return (

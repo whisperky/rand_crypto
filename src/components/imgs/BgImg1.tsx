@@ -1,12 +1,6 @@
 export const BgImg1 = () => {
   return (
-    <svg
-      width="928"
-      height="606"
-      viewBox="0 0 928 606"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 928 606" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect
         x="60"
         y="605.863"

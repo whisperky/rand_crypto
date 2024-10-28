@@ -21,7 +21,7 @@ export const OurProcessContainer = () => {
         direction={{ base: "column", md: "row" }}
         justify="space-between"
         gap={12}
-        px="20"
+        px={{ base: "20px", md: "0px" }}
       >
         {PROCESS_STEPS.map((step, index) => (
           <ProcessCard key={index} step={step} index={index} />

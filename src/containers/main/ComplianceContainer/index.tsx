@@ -17,8 +17,8 @@ export const ComplianceContainer = () => {
       justify="center"
       textAlign="center"
       w="100%"
-      pt="90px"
-      pb="170px"
+      pt={{ base: "10px", sm: "20px", md: "70px" }}
+      pb={{ base: "440px", sm: "360px", md: "320px", lg: "180px", xl: "170px" }}
       px="10%"
       color="white"
       gap={8}
@@ -29,7 +29,13 @@ export const ComplianceContainer = () => {
       <Text fontSize="36px" fontWeight="bold" color="white">
         World-Class Compliance Standards
       </Text>
-      <Text fontSize="18px" color="#E0E0E0" lineHeight="28px" px="30%" pb={8}>
+      <Text
+        fontSize="18px"
+        color="#E0E0E0"
+        lineHeight="28px"
+        px={{ base: "6px", sm: "6px", md: "10%", lg: "30%" }}
+        pb={8}
+      >
         Experience the highest level of security and regulatory compliance in
         the cryptocurrency industry.
       </Text>
@@ -40,16 +46,22 @@ export const ComplianceContainer = () => {
         align="center"
         justify="center"
         gap={8}
-        p="10"
+        px={{ base: "2px", md: "4px", lg: "8px", xl: "10px" }}
+        pt={{ base: "4px", md: "8px", lg: "12px", xl: "16px" }}
+        pb="40px"
         bottom="-190px"
-        left="10%"
-        right="10%"
+        left={{ base: "2%", md: "5%", lg: "10%" }}
+        right={{ base: "2%", md: "5%", lg: "10%" }}
         bg="white"
         borderRadius="2xl"
         boxShadow="0px 0px 10px 0px rgba(0, 0, 0, 0.1)"
       >
         <MotionGrid
-          templateColumns={{ base: "1fr", sm: "repeat(4, 1fr)" }}
+          templateColumns={{
+            base: "repeat(2, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(4, 1fr)",
+          }}
           mt={4}
         >
           {COMPLIANCE_FEATURES.map((feature, index) => (
