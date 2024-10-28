@@ -4,7 +4,7 @@ import { Button } from "@chakra-ui/react";
 export const GradBtn = ({
   content,
   px = "30px",
-  py = "10px",
+  py = "20px",
   ...props
 }: {
   content: ReactNode;
