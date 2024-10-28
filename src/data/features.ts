@@ -51,3 +51,27 @@ export const PROCESS_STEPS = [
     description: "Enjoy peace of mind with our top-notch security measures.",
   },
 ];
+
+export const OTC_FEATURES = [
+  {
+    title: "Deep Liquidity",
+    description: "Access to extensive liquidity pools for large-volume trades",
+    icon: "💧",
+  },
+  {
+    title: "Competitive Pricing",
+    description:
+      "Best-in-class pricing for bulk transactions with minimal slippage",
+    icon: "💎",
+  },
+  {
+    title: "Personal Service",
+    description: "Dedicated account managers available 24/7",
+    icon: "👤",
+  },
+  {
+    title: "Secure Settlement",
+    description: "Guaranteed settlement through escrow services",
+    icon: "🔒",
+  },
+];

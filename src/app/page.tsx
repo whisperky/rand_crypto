@@ -8,6 +8,7 @@ import { Banner } from "@/containers/main/Banner";
 import { AMLContainer } from "@/containers/main/AMLContainer";
 import { ComplianceContainer } from "@/containers/main/ComplianceContainer";
 import { OurProcessContainer } from "@/containers/main/OurProcessContainer";
+import { OtcDeskContainer } from "@/containers/main/OtcDeskContainer";
 
 import Loading from "@/components/Loading";
 
@@ -38,6 +39,7 @@ export default function Home() {
       <AMLContainer />
       <ComplianceContainer />
       <OurProcessContainer />
+      <OtcDeskContainer />
     </Flex>
   );
 }
