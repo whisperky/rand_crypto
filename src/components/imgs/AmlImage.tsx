@@ -1,8 +1,6 @@
 export const AmlImage = () => {
   return (
     <svg
-      width="599"
-      height="355"
       viewBox="0 0 599 355"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

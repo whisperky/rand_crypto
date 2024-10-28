@@ -3,9 +3,7 @@ import { motion } from "framer-motion";
 import { LuArrowRight, LuArrowUp } from "react-icons/lu";
 
 import { GradBtn } from "@/components/Buttons";
-import { BgImg1, BgImg2 } from "@/components/imgs";
 
-import { OTC_FEATURES } from "@/data/features";
 import { BitcoinColor } from "@/components/icons";
 import { BgImg4 } from "@/components/imgs/BgImg4";
 import { BgImg5 } from "@/components/imgs/BgImg5";
