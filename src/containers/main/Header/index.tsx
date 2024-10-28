@@ -7,11 +7,11 @@ const MotionText = motion.create(Text);
 
 export const Header = () => {
   const features = [
-    "AML",
-    "Compliance",
-    "Our Process",
-    "OTC Desk",
-    "Terms & Conditions",
+    { id: "aml", label: "AML" },
+    { id: "compliance", label: "Compliance" },
+    { id: "process", label: "Our Process" },
+    { id: "otc", label: "OTC Desk" },
+    { id: "terms", label: "Terms & Conditions" },
   ];
   const [isScrolled, setIsScrolled] = useState(false); // Add this state
 
@@ -24,6 +24,13 @@ export const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <MotionFlex
@@ -46,7 +53,13 @@ export const Header = () => {
       animate={{ opacity: 1, y: 0 }}
       // transition={{ duration: 1 }}
     >
-      <Flex align="center" gap={4} height="100%">
+      <Flex
+        align="center"
+        gap={4}
+        height="100%"
+        onClick={() => handleScroll("banner")}
+        _hover={{ cursor: "pointer" }}
+      >
         <Image
           src="/img/logo-color.png"
           alt="Company Logo"
@@ -80,7 +93,8 @@ export const Header = () => {
       <Flex height="full" color="white">
         {features.map((feature, index) => (
           <MotionText
-            key={feature}
+            key={feature.id}
+            onClick={() => handleScroll(feature.id)}
             width="180px"
             fontSize="16px"
             fontWeight="400"
@@ -97,7 +111,7 @@ export const Header = () => {
               transition: "all 0.1s ease-in-out",
             }}
           >
-            {feature}
+            {feature.label}
           </MotionText>
         ))}
       </Flex>
