@@ -1,12 +1,6 @@
 export const ETH = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="48"
-      width="48"
-      viewBox="0 0 24 24"
-      fill="#3671E9"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#3671E9">
       <path
         fill="#3671E9"
         d="M12 2v7.39l6.25 2.795zm0 0L5.75 12.185L12 9.39zm0 14.975V22l6.25-8.65zM12 22v-5.025L5.75 13.35z"
