@@ -122,6 +122,7 @@ export const Footer = () => {
             gap={4}
             flex={1}
             display={{ sm: "flex", md: "none", lg: "flex" }}
+            justifyItems={{ base: "center", sm: "flex-start" }}
           >
             <Image src="/img/logo-color.png" height="50px" alt="Rand Crypto" />
             <Text fontSize="2xl" fontWeight="bold" color="teal.400">
