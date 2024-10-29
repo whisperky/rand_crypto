@@ -43,7 +43,7 @@ export const AMLContainer = () => {
         ref={imgRef}
         position="relative"
         w={{ base: "100%", md: "50%" }}
-        h="350px"
+        h={{ base: "150px", sm: "350px" }}
         initial={{ opacity: 0, x: -20 }}
         animate={{
           opacity: isImgInView ? 1 : 0,
@@ -64,6 +64,8 @@ export const AMLContainer = () => {
         align="start"
         gap={4}
         w={{ base: "100%", md: "40%" }}
+        alignItems={{ base: "center", sm: "flex-start" }}
+        textAlign={{ base: "center", sm: "left" }}
         mt={{ base: 8, md: 0 }}
         initial={{ opacity: 0, x: 20 }}
         animate={{

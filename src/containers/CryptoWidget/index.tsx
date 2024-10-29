@@ -77,7 +77,7 @@ export const CryptoWidget = ({ cryptos }: CryptoWidgetProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  $
+                  Zar
                   {prices[crypto as keyof typeof prices]?.toLocaleString(
                     undefined,
                     {
@@ -124,14 +124,14 @@ export const CryptoWidget = ({ cryptos }: CryptoWidgetProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  $
                   {prices[crypto as keyof typeof prices]?.toLocaleString(
                     undefined,
                     {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     }
-                  ) || "0.00"}
+                  ) || "0.00"}{" "}
+                  ZAR
                 </MotionText>
                 <MotionText
                   fontSize="12px"

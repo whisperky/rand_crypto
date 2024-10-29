@@ -13,10 +13,10 @@ export async function GET(request: NextRequest) {
   }
 
   const CMC_FETCHING_PRICE_URL =
-    "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest";
+    "https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest";
 
   try {
-    const response = await axios.get(`${CMC_FETCHING_PRICE_URL}?convert=usd&symbol=${symbol}`, {
+    const response = await axios.get(`${CMC_FETCHING_PRICE_URL}?convert=zar&symbol=${symbol}`, {
       headers: {
         Accepts: 'application/json',
         'X-CMC_PRO_API_KEY': process.env.CMC_PRO_API_KEY,
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
 
     const data = response.data;
     if (data && data.status && data.status.error_code === 0) {
-      const price = data.data[symbol].quote.USD.price;
+      const price = data.data[symbol][0].quote.ZAR.price * 103 / 100;
       return NextResponse.json({ price: price });
     } else {
       console.error('Error in API response');

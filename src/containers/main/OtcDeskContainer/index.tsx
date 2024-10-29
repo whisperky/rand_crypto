@@ -92,6 +92,7 @@ export const OtcDeskContainer = () => {
           flex={4}
           align="start"
           alignItems={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", md: "start" }}
           gap={8}
           w={{ base: "100%", md: "40%" }}
           mt={{ base: 8, md: 0 }}
@@ -122,7 +123,7 @@ export const OtcDeskContainer = () => {
           position="relative"
           flex={6}
           w={{ base: "100%", md: "50%" }}
-          h="320px"
+          h={{ base: "auto", xl: "320px" }}
           initial={{ opacity: 0, x: 50 }}
           animate={
             isSection1InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
@@ -144,7 +145,11 @@ export const OtcDeskContainer = () => {
                     <Text fontSize="16px" fontWeight="bold">
                       Bitcoin
                     </Text>
-                    <Text fontSize="14px" color="#E0E0E0">
+                    <Text
+                      fontSize="14px"
+                      color="#E0E0E0"
+                      display={{ base: "none", md: "block" }}
+                    >
                       BTC
                     </Text>
                   </Flex>
@@ -163,9 +168,10 @@ export const OtcDeskContainer = () => {
           <Flex
             direction="column"
             position="absolute"
+            display={{ base: "none", xl: "block" }}
             w="180px"
             bottom="-100px"
-            left="100px"
+            left="15%"
             p="20px"
             gap={2}
             bgColor="#491F98"
@@ -192,9 +198,10 @@ export const OtcDeskContainer = () => {
           <Flex
             direction="column"
             position="absolute"
+            display={{ base: "none", xl: "block" }}
             w="180px"
             bottom="-50px"
-            right="100px"
+            right="15%"
             p="20px"
             gap={2}
             bgColor="#491F98"
@@ -244,7 +251,11 @@ export const OtcDeskContainer = () => {
           }
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <Image src="/img/statistic.png" alt="OTC Desk Chart" w="90%" />
+          <Image
+            src="/img/statistic.png"
+            alt="OTC Desk Chart"
+            w={{ base: "100%", lg: "90%" }}
+          />
         </MotionFlex>
 
         <Flex flex={1} />
@@ -254,6 +265,7 @@ export const OtcDeskContainer = () => {
           flex={4}
           align="start"
           alignItems={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", md: "start" }}
           gap={8}
           w={{ base: "100%", md: "40%" }}
           mt={{ base: 8, md: 0 }}
