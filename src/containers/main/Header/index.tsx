@@ -88,6 +88,7 @@ export const Header = () => {
           //   }}
           letterSpacing="1px"
           textStyle="1.5rem"
+          className="font-audiowide"
         >
           Rand Crypto
         </MotionText>

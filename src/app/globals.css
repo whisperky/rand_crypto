@@ -32,6 +32,10 @@ body {
   font-family: var(--font-inter);
 }
 
+.font-audiowide {
+  font-family: var(--font-audiowide);
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
