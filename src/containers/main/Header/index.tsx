@@ -73,7 +73,7 @@ export const Header = () => {
           as="h2"
           fontWeight="bold"
           fontSize={{ base: "xl", md: "2xl" }}
-          color="cyan"
+          color="#6ac0c0"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{

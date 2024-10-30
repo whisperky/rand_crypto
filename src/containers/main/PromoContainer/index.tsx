@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import { Flex } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
 
-import { CryptoPriceDisplay } from "@/components/CryptoPriceDisplay";
+import { StatisticDisplay } from "@/components/StatisticDisplay";
 
 import { AD_FEATURES } from "@/data/features";
 
@@ -74,7 +74,7 @@ export const PromoContainer = () => {
                     delay: inView ? (rowIndex * 3 + columnIndex) * 0.2 : 0,
                   }}
                 >
-                  <CryptoPriceDisplay
+                  <StatisticDisplay
                     title={feature.title}
                     content={feature.icon}
                     value={feature.value}

@@ -8,11 +8,13 @@ export const IconCard = ({
   size = 20,
   padding = 4,
   bgColor = "#FFFFFF1A",
+  borderColor = "none",
 }: {
   icon?: "BTC" | "ETH" | "TON" | "USDT" | "XRP" | "👥" | "💧" | "💎" | "🔒";
   size?: number;
   padding?: number;
   bgColor?: string;
+  borderColor?: string;
 }) => {
   return (
     <Flex
@@ -23,6 +25,7 @@ export const IconCard = ({
       p={padding}
       width={size}
       height={size}
+      border={borderColor !== "none" ? `1px solid ${borderColor}` : "none"}
     >
       {icon === "BTC" && <BTC />}
       {icon === "ETH" && <ETH />}

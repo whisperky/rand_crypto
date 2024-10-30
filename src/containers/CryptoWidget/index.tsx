@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import axios from "axios";
 import Marquee from "react-fast-marquee";
 
 import { IconCard } from "@/components/IconCard";
+import { useRateContext } from "@/contexts";
 
 const MotionText = motion.create(Text);
 
@@ -15,31 +15,9 @@ interface CryptoWidgetProps {
 }
 
 export const CryptoWidget = ({ cryptos }: CryptoWidgetProps) => {
+  const rates = useRateContext();
+
   const isMobile = useBreakpointValue({ base: true, md: false });
-
-  const [prices, setPrices] = useState({
-    BTC: 0,
-    ETH: 0,
-    USDT: 0,
-    XRP: 0,
-    TON: 0,
-  });
-
-  useEffect(() => {
-    const fetchPrices = async () => {
-      if (cryptos.length === 0) return;
-      for (const crypto of cryptos) {
-        const response = await axios.get(`/api/get-price?symbol=${crypto}`);
-        const data = response.data;
-        setPrices((prevPrices) => ({
-          ...prevPrices,
-          [crypto]: data.price,
-        }));
-      }
-    };
-
-    fetchPrices();
-  }, []);
 
   return (
     <Flex
@@ -77,8 +55,8 @@ export const CryptoWidget = ({ cryptos }: CryptoWidgetProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  Zar
-                  {prices[crypto as keyof typeof prices]?.toLocaleString(
+                  R{" "}
+                  {rates[crypto as keyof typeof rates]?.toLocaleString(
                     undefined,
                     {
                       minimumFractionDigits: 2,
@@ -124,14 +102,14 @@ export const CryptoWidget = ({ cryptos }: CryptoWidgetProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  {prices[crypto as keyof typeof prices]?.toLocaleString(
+                  R{" "}
+                  {rates[crypto as keyof typeof rates]?.toLocaleString(
                     undefined,
                     {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     }
-                  ) || "0.00"}{" "}
-                  ZAR
+                  )}
                 </MotionText>
                 <MotionText
                   fontSize="12px"

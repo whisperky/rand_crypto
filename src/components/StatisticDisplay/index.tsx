@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const MotionText = motion.create(Text);
 
-interface CryptoPriceDisplayProps {
+interface StatisticDisplayProps {
   title?: string;
   content: string;
   value: number;
@@ -13,13 +13,13 @@ interface CryptoPriceDisplayProps {
   delay?: number; // Add delay prop
 }
 
-export const CryptoPriceDisplay = ({
+export const StatisticDisplay = ({
   title,
   content,
   value,
   unit,
   delay = 0.4,
-}: CryptoPriceDisplayProps) => {
+}: StatisticDisplayProps) => {
   const [displayPrice, setDisplayPrice] = useState(0);
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
@@ -76,7 +76,7 @@ export const CryptoPriceDisplay = ({
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {unit}
-            {displayPrice ? formatNumber(displayPrice) : "1.00k"}
+            {displayPrice ? formatNumber(displayPrice) : "1k"}
           </MotionText>
           <MotionText
             className="font-rubik"

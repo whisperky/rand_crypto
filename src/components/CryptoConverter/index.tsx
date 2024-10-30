@@ -4,54 +4,106 @@ import {
   Input,
   Text,
   Button,
-  //   createListCollection,
+  Image,
+  createListCollection,
 } from "@chakra-ui/react";
-// import {
-//   SelectContent,
-//   SelectItem,
-//   SelectRoot,
-//   SelectTrigger,
-//   SelectValueText,
-// } from "@/components/ui/select";
+import {
+  SelectContent,
+  SelectItem,
+  SelectRoot,
+  SelectTrigger,
+  SelectValueText,
+} from "@/components/ui/select";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { FaExchangeAlt } from "react-icons/fa";
+
+import { useRateContext } from "@/contexts";
+
+import { IconCard } from "../IconCard";
 
 const MotionFlex = motion.create(Flex);
 
-// const collection = createListCollection({
-//   items: [
-//     { label: "ZAR", value: "ZAR" },
-//     { label: "USD", value: "USD" },
-//   ],
-// });
+const cryptoCollection = createListCollection({
+  items: [
+    { label: "USDT", value: "USDT" },
+    { label: "BTC", value: "BTC" },
+    { label: "ETH", value: "ETH" },
+    { label: "XRP", value: "XRP" },
+    { label: "TON", value: "TON" },
+  ],
+});
+
+const zarCollection = createListCollection({
+  items: [{ label: "ZAR", value: "ZAR" }],
+});
+
+const SelectValueItem = () => (
+  <SelectValueText placeholder="USDTAA">
+    {(items: Array<{ label: string }>) => {
+      const { label } = items[0];
+      return (
+        <Flex alignItems="center" gap={2} px={2}>
+          <IconCard
+            icon={label as "BTC" | "ETH" | "TON" | "USDT" | "XRP"}
+            size={7}
+            padding={1}
+            bgColor="#FFFFFF1A"
+          />
+          {label}
+        </Flex>
+      );
+    }}
+  </SelectValueText>
+);
+
+const SelectValueItemZar = () => (
+  <SelectValueText placeholder="ZARAAa" fontSize={{ base: "12px", sm: "16px" }}>
+    {(items: Array<{ label: string }>) => {
+      const { label } = items[0];
+      return (
+        <Flex alignItems="center" gap={2} px={2}>
+          <Image
+            src={`/img/icons/${label.toLowerCase()}.png`}
+            alt={label}
+            width="28px"
+            height="28px"
+          />
+          {label}
+        </Flex>
+      );
+    }}
+  </SelectValueText>
+);
 
 export const CryptoConverter = () => {
+  const rates = useRateContext();
+
   const [amount, setAmount] = useState<string>("");
   const [fromCurrency, setFromCurrency] = useState("ZAR");
-  const [toCurrency, setToCurrency] = useState("USD");
+  const [toCurrency, setToCurrency] = useState("USDT");
   const [convertedAmount, setConvertedAmount] = useState<string>("");
   const [rate, setRate] = useState(0);
 
-  useEffect(() => {
-    const fetchRate = async () => {
-      try {
-        const response = await axios.get("/api/get-exchange-rate");
-        setRate((response.data.rate * 103) / 100);
-      } catch (error) {
-        console.error("Error fetching rate:", error);
-        // Fallback to a default rate if API fails
-        setRate(0.053);
-      }
-    };
+  const [fromCollection, setFromCollection] = useState(zarCollection);
+  const [toCollection, setToCollection] = useState(cryptoCollection);
 
-    fetchRate();
-  }, [fromCurrency, toCurrency]);
+  useEffect(() => {
+    if (rates && rates[toCurrency as keyof typeof rates]) {
+      setRate(rates[toCurrency as keyof typeof rates]);
+
+      if (amount && !isNaN(Number(amount))) {
+        const converted = (
+          Number(amount) / rates[toCurrency as keyof typeof rates]
+        ).toFixed(6);
+        setConvertedAmount(converted);
+      }
+    }
+  }, [rates, toCurrency, amount]);
 
   const handleAmountChange = (value: string) => {
     setAmount(value);
     if (value && !isNaN(Number(value))) {
-      const converted = (Number(value) * rate).toFixed(2);
+      const converted = (Number(value) / rate).toFixed(6);
       setConvertedAmount(converted);
     } else {
       setConvertedAmount("");
@@ -59,10 +111,19 @@ export const CryptoConverter = () => {
   };
 
   const switchCurrencies = () => {
+    const tempCurrency = fromCurrency;
     setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
-    setAmount(convertedAmount);
-    setConvertedAmount(amount);
+    setToCurrency(tempCurrency);
+
+    const tempCollection = fromCollection;
+    setFromCollection(toCollection);
+    setToCollection(tempCollection);
+
+    if (amount && !isNaN(Number(amount))) {
+      setAmount(convertedAmount);
+      const newConverted = (Number(convertedAmount) * rate).toFixed(2);
+      setConvertedAmount(newConverted);
+    }
   };
 
   return (
@@ -72,7 +133,7 @@ export const CryptoConverter = () => {
       backdropFilter="blur(10px)"
       borderRadius="xl"
       maxW={{ base: "100%", md: "300px", lg: "400px", xl: "500px" }}
-      p={6}
+      p={{ base: 2, sm: 4, md: 6 }}
       gap={4}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -81,15 +142,16 @@ export const CryptoConverter = () => {
       <Text fontSize="xl" fontWeight="bold" color="cyan.300" textAlign="center">
         Quick Convert
       </Text>
-      <Flex gap={{ base: 0, md: 2, lg: 4 }} align="center">
-        <Flex flex={1} direction="column" gap={2}>
+      <Flex direction="column" gap={{ base: 0, md: 2, lg: 4 }} align="center">
+        <Flex flex={1} gap={2} justifyContent="space-between">
           <Input
             value={amount}
             type="number"
             onChange={(e) => handleAmountChange(e.target.value)}
-            placeholder={`${fromCurrency}`}
+            placeholder="From"
             size="lg"
             bg="rgba(255, 255, 255, 0.05)"
+            maxW={{ base: "150px", md: "200px" }}
             px={4}
             border="1px solid"
             borderColor="cyan.400"
@@ -97,44 +159,87 @@ export const CryptoConverter = () => {
             _hover={{ borderColor: "cyan.300" }}
             _focus={{ borderColor: "cyan.200" }}
           />
-          {/* <SelectRoot
-            collection={collection}
-            value={["ZAR", "USD"]}
-            onValueChange={(e: any) => setFromCurrency(e.value)}
+          <SelectRoot
+            collection={fromCollection}
+            onValueChange={(e: any) => setFromCurrency(e.value[0])}
+            defaultValue={[fromCurrency]}
+            maxW={{ base: "120px", md: "140px" }}
+            fontSize={{ base: "12px", sm: "16px" }}
+            value={[fromCurrency]}
           >
             <SelectTrigger
               bg="rgba(255, 255, 255, 0.05)"
               borderColor="cyan.400"
+              borderRadius="xl"
             >
-              <SelectValueText />
+              {fromCurrency === "ZAR" ? (
+                <SelectValueItemZar />
+              ) : (
+                <SelectValueItem />
+              )}
             </SelectTrigger>
             <SelectContent>
-              <SelectItem item={fromCurrency} key="ZAR">
-                ZAR
-              </SelectItem>
-              <SelectItem item={toCurrency} key="USD">
-                USD
-              </SelectItem>
+              {fromCollection.items.map((item) => (
+                <SelectItem
+                  item={item}
+                  key={item.value}
+                  w="100%"
+                  fontSize={{ base: "12px", sm: "16px" }}
+                >
+                  {fromCurrency === "ZAR" ? (
+                    <Image
+                      src={`/img/icons/${item.value.toLowerCase()}.png`}
+                      alt={item.value}
+                      width="28px"
+                      height="28px"
+                    />
+                  ) : (
+                    <IconCard
+                      icon={
+                        item.value as "BTC" | "ETH" | "TON" | "USDT" | "XRP"
+                      }
+                      size={8}
+                      padding={2}
+                      bgColor="#FFFFFF1A"
+                      borderColor="#00000044"
+                    />
+                  )}
+                  {item.label}
+                </SelectItem>
+              ))}
             </SelectContent>
-          </SelectRoot> */}
+          </SelectRoot>
         </Flex>
 
-        <Button
-          aria-label="Switch currencies"
-          onClick={switchCurrencies}
-          variant="ghost"
-          color="cyan.300"
-          _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}
+        <Flex
+          flex={1}
+          gap={2}
+          w="100%"
+          px={4}
+          justifyContent="space-between"
+          alignItems="center"
         >
-          <FaExchangeAlt />
-        </Button>
+          <Text fontSize="sm" color="cyan.300">
+            At {rate.toFixed(2)} ZAR
+          </Text>
+          <Button
+            aria-label="Switch currencies"
+            onClick={switchCurrencies}
+            variant="ghost"
+            color="cyan.300"
+            _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}
+          >
+            <FaExchangeAlt />
+          </Button>
+        </Flex>
 
-        <Flex flex={1} direction="column" gap={2}>
+        <Flex flex={1} gap={2}>
           <Input
             value={convertedAmount}
             readOnly
-            placeholder={toCurrency}
+            placeholder="To"
             size="lg"
+            maxW={{ base: "150px", md: "200px" }}
             bg="rgba(255, 255, 255, 0.05)"
             border="1px solid"
             borderColor="purple.400"
@@ -142,26 +247,57 @@ export const CryptoConverter = () => {
             borderRadius="xl"
             _hover={{ borderColor: "purple.300" }}
           />
-          {/* <SelectRoot
-            collection={collection}
-            value={["USD", "ZAR"]}
-            onValueChange={(e: any) => setToCurrency(e.value)}
+          <SelectRoot
+            collection={toCollection}
+            onValueChange={(e: any) => setToCurrency(e.value[0])}
+            defaultValue={[toCurrency]}
+            maxW={{ base: "120px", md: "140px" }}
+            fontSize={{ base: "12px", sm: "16px" }}
+            value={[toCurrency]}
           >
             <SelectTrigger
               bg="rgba(255, 255, 255, 0.05)"
               borderColor="purple.400"
+              borderRadius="xl"
             >
-              <SelectValueText />
+              {toCurrency === "ZAR" ? (
+                <SelectValueItemZar />
+              ) : (
+                <SelectValueItem />
+              )}
             </SelectTrigger>
             <SelectContent>
-              <SelectItem item={toCurrency} key="USD">
-                USD
-              </SelectItem>
-              <SelectItem item={toCurrency} key="ZAR">
-                ZAR
-              </SelectItem>
+              {toCollection.items.map((item) => (
+                <SelectItem
+                  item={item}
+                  key={item.value}
+                  w="100%"
+                  fontSize={{ base: "10px", sm: "16px" }}
+                  gap={{ base: 1, sm: 2 }}
+                >
+                  {toCurrency === "ZAR" ? (
+                    <Image
+                      src={`/img/icons/${item.value.toLowerCase()}.png`}
+                      alt={item.value}
+                      width="28px"
+                      height="28px"
+                    />
+                  ) : (
+                    <IconCard
+                      icon={
+                        item.value as "BTC" | "ETH" | "TON" | "USDT" | "XRP"
+                      }
+                      size={8}
+                      padding={2}
+                      bgColor="#FFFFFF1A"
+                      borderColor="#00000044"
+                    />
+                  )}
+                  {item.label}
+                </SelectItem>
+              ))}
             </SelectContent>
-          </SelectRoot> */}
+          </SelectRoot>
         </Flex>
       </Flex>
     </MotionFlex>
