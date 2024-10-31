@@ -1,13 +1,15 @@
 import { useRef } from "react";
-import { Flex, Text, Image } from "@chakra-ui/react";
+import { Flex, Text, Image, Link } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
 import { LuArrowRight, LuArrowUp } from "react-icons/lu";
+import { FaTelegramPlane, FaEnvelope } from "react-icons/fa";
 
 import { GradBtn } from "@/components/Buttons";
 
 import { BitcoinColor } from "@/components/icons";
 import { BgImg4 } from "@/components/imgs/BgImg4";
 import { BgImg5 } from "@/components/imgs/BgImg5";
+import { BsTelegram } from "react-icons/bs";
 
 const MotionFlex = motion.create(Flex);
 const MotionText = motion.create(Text);
@@ -306,6 +308,41 @@ export const OtcDeskContainer = () => {
           }
           py="27px"
         />
+
+        <Flex
+          mt={6}
+          gap={6}
+          align="center"
+          fontSize="16px"
+          color="#E0E0E0"
+          direction={{ base: "column", sm: "row" }}
+        >
+          <Link href="mailto:otc@rand.com">
+            <Flex
+              as="a"
+              align="center"
+              gap={2}
+              _hover={{ color: "#00F0FF" }}
+              transition="color 0.2s"
+            >
+              <FaEnvelope />
+              <Text>otc@rand.com</Text>
+            </Flex>
+          </Link>
+          <Text display={{ base: "none", sm: "block" }}>|</Text>
+          <Link href="https://t.me/randcrypto" target="_blank">
+            <Flex
+              as="a"
+              align="center"
+              gap={2}
+              _hover={{ color: "#00F0FF" }}
+              transition="color 0.2s"
+            >
+              <FaTelegramPlane />
+              <Text>Telegram</Text>
+            </Flex>
+          </Link>
+        </Flex>
       </MotionFlex>
     </Flex>
   );
