@@ -121,11 +121,22 @@ export const Footer = () => {
             align="start"
             gap={4}
             flex={1}
-            display={{ sm: "flex", md: "none", lg: "flex" }}
+            display={{ base: "flex", md: "none", lg: "flex" }}
             justifyItems={{ base: "center", sm: "flex-start" }}
+            alignItems="center"
           >
-            <Image src="/img/logo-color.png" height="50px" alt="Rand Crypto" />
-            <Text fontSize="2xl" fontWeight="bold" color="teal.400">
+            <Image
+              src="/img/logo-color.png"
+              height="50px"
+              alt="Rand Crypto"
+              alignSelf="center"
+            />
+            <Text
+              fontSize="2xl"
+              fontWeight="regular"
+              color="#6ac0c0"
+              className="font-audiowide"
+            >
               Rand Crypto
             </Text>
           </Flex>
