@@ -24,12 +24,12 @@ export const CryptoWidget = ({ cryptos }: CryptoWidgetProps) => {
       position="relative"
       gap={8}
       justifyContent="space-between"
-      width={{ base: "100%", md: "100%", xl: "90%" }}
+      width={{ base: "100%", md: "100%", xl: "100%" }}
       mx="auto"
       borderRadius="full"
       border="1px solid #333"
       py="12px"
-      px={{ base: "6px", md: "4px", lg: "12px", xl: "48px" }}
+      px={{ base: "16px", md: "4px", lg: "12px", xl: "48px" }}
     >
       {isMobile ? (
         <Marquee gradientWidth="100%">

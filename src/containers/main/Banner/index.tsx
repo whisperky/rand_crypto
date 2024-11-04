@@ -53,7 +53,7 @@ export const Banner = () => {
         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
       /> */}
 
-      <Flex w="100%" px={{ base: "6px", md: "10px", lg: "5%", xl: "10%" }}>
+      <Flex w="100%" px={{ base: "6px", md: "10px", lg: "5%", xl: "8.2%" }}>
         <CryptoWidget cryptos={["BTC", "ETH", "USDT", "XRP", "TON"]} />
       </Flex>
 

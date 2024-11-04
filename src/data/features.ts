@@ -79,21 +79,21 @@ export const OTC_FEATURES = [
 export const AD_FEATURES = [
   {
     title: "Active Users",
-    value: 100000,
+    value: 100,
     unit: "+",
     description: "Registered users worldwide",
     icon: "👥",
   },
   {
-    title: "Trading Volume",
-    value: 500000000,
-    unit: "$",
-    description: "Monthly trading volume",
+    title: "Liquidity",
+    value: 5000000,
+    unit: "Upto $",
+    description: "Liquidity pool",
     icon: "💧",
   },
   {
-    title: "Success Rate",
-    value: 99.99,
+    title: "Fast Settlement",
+    value: 99,
     unit: "%",
     description: "Transaction success rate",
     icon: "💎",

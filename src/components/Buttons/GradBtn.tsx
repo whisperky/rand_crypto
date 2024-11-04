@@ -5,11 +5,13 @@ export const GradBtn = ({
   content,
   px = "30px",
   py = "20px",
+  onClick,
   ...props
 }: {
   content: ReactNode;
   px?: string;
   py?: string;
+  onClick?: () => void;
 }) => {
   return (
     <Button
@@ -29,6 +31,7 @@ export const GradBtn = ({
       }}
       //   boxShadow="0 0 20px rgba(0, 255, 255, 0.7)"
       _active={{ transform: "scale(0.95)" }}
+      onClick={onClick}
     >
       {content}
     </Button>

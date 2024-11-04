@@ -6,11 +6,11 @@ interface IRates {
 }
 
 const RateContextDefaultValues: IRates = {
+  USDT: 0,
   BTC: 0,
   ETH: 0,
   XRP: 0,
   TON: 0,
-  USDT: 0,
 };
 
 const RateContext = createContext(RateContextDefaultValues);
@@ -20,7 +20,7 @@ export const RateProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const fetchPrices = async () => {
-      const cryptos = ["BTC", "ETH", "XRP", "TON", "USDT"];
+      const cryptos = ["USDT", "BTC", "ETH", "XRP", "TON"];
       if (cryptos.length === 0) return;
       for (const crypto of cryptos) {
         const response = await axios.get(`/api/get-price?symbol=${crypto}`);
