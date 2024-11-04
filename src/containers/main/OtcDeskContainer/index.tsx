@@ -331,7 +331,7 @@ export const OtcDeskContainer = () => {
         gradientTo="#0D0D2B"
         w="100%"
         gap={10}
-        px="10%"
+        px={{ base: "3%", md: "10%" }}
         py="88px"
         align="stretch"
         direction="column"
@@ -341,7 +341,8 @@ export const OtcDeskContainer = () => {
           position="relative"
           bg="blue.500"
           color="white"
-          p="48px"
+          px={{ base: "24px", md: "48px" }}
+          py="48px"
           borderRadius="3xl"
           align="center"
           gap={{ base: 8, lg: 0 }}

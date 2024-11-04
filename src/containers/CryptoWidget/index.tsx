@@ -22,14 +22,14 @@ export const CryptoWidget = ({ cryptos }: CryptoWidgetProps) => {
   return (
     <Flex
       position="relative"
-      gap={8}
+      gap={{ base: 8, md: 0, lg: 8 }}
       justifyContent="space-between"
       width={{ base: "100%", md: "100%", xl: "100%" }}
       mx="auto"
       borderRadius="full"
       border="1px solid #333"
       py="12px"
-      px={{ base: "16px", md: "4px", lg: "12px", xl: "48px" }}
+      px={{ base: "16px", md: "0px", lg: "12px", xl: "48px" }}
     >
       {isMobile ? (
         <Marquee gradientWidth="100%">
