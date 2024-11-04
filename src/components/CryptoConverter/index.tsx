@@ -38,7 +38,7 @@ const zarCollection = createListCollection({
 });
 
 const SelectValueItem = () => (
-  <SelectValueText placeholder="USDTAA">
+  <SelectValueText placeholder="USDT">
     {(items: Array<{ label: string }>) => {
       const { label } = items[0];
       return (
@@ -57,7 +57,7 @@ const SelectValueItem = () => (
 );
 
 const SelectValueItemZar = () => (
-  <SelectValueText placeholder="ZARAAa" fontSize={{ base: "12px", sm: "16px" }}>
+  <SelectValueText placeholder="ZAR" fontSize={{ base: "12px", sm: "16px" }}>
     {(items: Array<{ label: string }>) => {
       const { label } = items[0];
       return (
@@ -88,17 +88,35 @@ export const CryptoConverter = () => {
   const [toCollection, setToCollection] = useState(cryptoCollection);
 
   useEffect(() => {
-    if (rates && rates[toCurrency as keyof typeof rates]) {
+    if (fromCurrency === "ZAR") {
       setRate(rates[toCurrency as keyof typeof rates]);
-
-      if (amount && !isNaN(Number(amount))) {
-        const converted = (
-          Number(amount) / rates[toCurrency as keyof typeof rates]
-        ).toFixed(6);
-        setConvertedAmount(converted);
-      }
+    } else {
+      setRate(rates[fromCurrency as keyof typeof rates]);
     }
-  }, [rates, toCurrency, amount]);
+  }, [rates]);
+
+  useEffect(() => {
+    const currentRate =
+      toCurrency === "ZAR"
+        ? rates[fromCurrency as keyof typeof rates]
+        : rates[toCurrency as keyof typeof rates];
+
+    console.log(rates, fromCurrency, toCurrency, rate, currentRate);
+    // Skip if rate is not available
+    if (!currentRate) return;
+
+    setRate(currentRate);
+
+    if (!amount || isNaN(Number(amount))) return;
+
+    // Calculate conversion based on direction
+    const converted =
+      toCurrency === "ZAR"
+        ? (Number(amount) * currentRate).toFixed(2)
+        : (Number(amount) / currentRate).toFixed(6);
+
+    setConvertedAmount(converted);
+  }, [rates, fromCurrency, toCurrency, amount]);
 
   const handleAmountChange = (value: string) => {
     setAmount(value);

@@ -45,7 +45,7 @@ export const Header = () => {
       align="center"
       justify="space-between"
       wrap="wrap"
-      px={{ base: "3%", md: "5%", lg: "4%", xl: "10%" }} // Adjust padding for mobile
+      px={{ base: "3%", md: "5%", lg: "2.8%", xl: "10%" }} // Adjust padding for mobile
       color="black"
       zIndex={10}
       bg={isOpen ? "#0a0f18f0" : "#0a0f1833"} // Update this line
@@ -122,7 +122,7 @@ export const Header = () => {
               handleScroll(feature.id);
               setIsOpen(false);
             }}
-            width={{ base: "100%", md: "150px", lg: "145px", xl: "162px" }}
+            width={{ base: "100%", md: "150px", lg: "145px", xl: "155px" }}
             py={{ base: 4, md: 0 }}
             fontSize="16px"
             fontWeight="400"

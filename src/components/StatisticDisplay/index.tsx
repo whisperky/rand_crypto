@@ -3,6 +3,8 @@ import { Flex, Text } from "@chakra-ui/react";
 import { IconCard } from "../IconCard";
 import { motion } from "framer-motion";
 
+import { formatNumberWithCommas } from "@/utils/numberFormat";
+
 const MotionText = motion.create(Text);
 
 interface StatisticDisplayProps {
@@ -53,30 +55,22 @@ export const StatisticDisplay = ({
     return () => clearInterval(timer);
   }, [value, shouldAnimate]);
 
-  const formatNumber = (num: number): string => {
-    if (num >= 1000000) {
-      return Math.floor(num / 1000000) + "M";
-    } else if (num >= 1000) {
-      return Math.floor(num / 1000) + "K";
-    }
-    return Math.floor(num).toString();
-  };
-
   return (
     <Flex direction="column" alignItems="center">
       <Flex gap={{ base: 12, lg: 6 }} alignItems="center">
         <IconCard icon={content as "👥" | "💧" | "💎"} size={20} />
         <Flex direction="column">
           <MotionText
-            fontSize="36px"
+            fontSize="28px"
             fontWeight="500"
             color="white"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {unit}
-            {displayPrice ? formatNumber(displayPrice) : "1k"}
+            {unit?.includes("$") ? unit : ""}
+            {displayPrice ? formatNumberWithCommas(displayPrice) : "100"}
+            {unit?.includes("$") ? "" : unit}
           </MotionText>
           <MotionText
             className="font-rubik"
