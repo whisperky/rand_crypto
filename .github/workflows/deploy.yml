@@ -1,0 +1,29 @@
+name: "Deployemnt 🚀"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Push to EC2
+    runs-on: [self-hosted, randcrypto]
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Generate .env
+        run: echo "${{ secrets.ENV_LIVE }}" >> .env
+
+      - name: Installing dependencies
+        run: |
+          npm install
+
+      - name: Building application
+        run: npm run build
+
+      - name: Start and run application
+        run: pm2 restart rc-fe
